@@ -85,7 +85,7 @@ namespace RPGM.EditorExtensions
 
         void DrawConfig(StoryItem si)
         {
-            GUILayout.BeginVertical(EditorStyles.helpBox);
+            GUILayout.BeginVertical(GUI.skin.button);
             GUILayout.Label("Text");
             EditorGUILayout.PropertyField(serializedObject.FindProperty("text"), GUIContent.none);
             GUILayout.Label("Audio (Optional)");
@@ -99,7 +99,7 @@ namespace RPGM.EditorExtensions
 
         void DrawInventoryItems(StoryItem si)
         {
-            GUILayout.BeginVertical(EditorStyles.helpBox);
+            GUILayout.BeginVertical(GUI.skin.button);
             if (GUILayout.Button("Add Required Inventory Item"))
             {
                 InventoryItemSearchDialog.Show(si, (i) =>
@@ -151,7 +151,7 @@ namespace RPGM.EditorExtensions
 
         void DrawStoryItems(StoryItem si)
         {
-            GUILayout.BeginVertical(EditorStyles.helpBox);
+            GUILayout.BeginVertical(GUI.skin.button);
             if (si.requiredStoryItems.Count > 0)
             {
                 EditorGUILayout.LabelField("Required Story Items");

@@ -16,9 +16,9 @@ MonoBehaviour:
   title: 'Creator Kit: RPG'
   sections:
   - heading: What is a Creator Kit?
-    text: "reator Kits are short step-by-step tutorials that don\u2019t require code
-      for complete beginners to gain a good understanding of Unity in less than an
-      hour."
+    text: "Creator Kits are short step-by-step tutorials that don\u2019t require
+      code for complete beginners to gain a good understanding of Unity in less than
+      an hour."
     linkText: 
     url: 
   - heading: How do I use it?
@@ -28,7 +28,8 @@ MonoBehaviour:
     linkText: Read the manual
     url: https://learn.unity.com/project/creator-kit-rpg
   - heading: Got feedback?
-    text: 'Let us know what you think or ask any questions you might have on our FORUM. '
+    text: 'Let us know what you think or ask any questions you might have on our
+      FORUM. '
     linkText: Forum Thread
     url: https://forum.unity.com/threads/creator-kit-rpg.693349/
   loadedLayout: 1
