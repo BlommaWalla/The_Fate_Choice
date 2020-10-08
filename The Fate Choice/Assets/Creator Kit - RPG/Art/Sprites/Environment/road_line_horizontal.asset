@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: lmao
+  m_Name: road_line_horizontal
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: a898b1ab7d3e15f4fb4bc786ffd610c4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8cbcc23d0b140a041b6b8032c6931f3b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
