@@ -22,7 +22,7 @@ namespace RPGM.Gameplay
 
         void OnTriggerEnter2D(Collider2D other)
         {
-            targetAlpha = 0.5f;
+            targetAlpha = 0f;
         }
 
         void OnTriggerExit2D(Collider2D other)
