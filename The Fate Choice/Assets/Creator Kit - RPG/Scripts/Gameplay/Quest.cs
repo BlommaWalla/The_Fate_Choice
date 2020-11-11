@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using RPGM.Core;
 using RPGM.UI;
 using UnityEngine;
+using UnityEditor;
+using System;
 
 namespace RPGM.Gameplay
 {
@@ -22,6 +24,9 @@ namespace RPGM.Gameplay
             public InventoryItem item;
             public int count = 1;
         }
+
+        public MonoScript script;
+
 
         public string title;
         public string desc;
@@ -67,6 +72,9 @@ namespace RPGM.Gameplay
                         break;
                 }
             }
+
+           
+
         }
 
         public void OnStartQuest()
@@ -92,6 +100,8 @@ namespace RPGM.Gameplay
                         var clone = GameObject.Instantiate(i);
                         clone.SetActive(true);
                         if (destroySpawnsOnQuestComplete) cleanup.Add(clone);
+
+
                     }
                     break;
                 case SpawnMode.CloneOnly:
@@ -102,6 +112,9 @@ namespace RPGM.Gameplay
                     }
                     break;
             }
+
+            
+
 
         }
 

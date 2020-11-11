@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
 public class SceneChange : MonoBehaviour
 {
-    public string sceneString = "Battle";
-
-    SceneManager.LoadScene(sceneName: scenestring);
+    public void LoadScene() {
+        SceneManager.LoadScene("SampleScene");
+    }
 
 }
