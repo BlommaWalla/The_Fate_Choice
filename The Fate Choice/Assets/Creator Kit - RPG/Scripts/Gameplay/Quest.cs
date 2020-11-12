@@ -22,7 +22,7 @@ namespace RPGM.Gameplay {
             public int count = 1;
         }
 
-        public bool battleAfterFinish;
+        public bool isBattle;
 
         public string title;
         public string desc;
@@ -107,7 +107,9 @@ namespace RPGM.Gameplay {
             }
 
 
-
+            if (isBattle == true) {
+                Startbattle();
+            }
 
         }
 

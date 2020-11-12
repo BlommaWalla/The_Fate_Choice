@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Creator Kit - RPG/Scenes/City.unity
     guid: 4507c12a263aa43469a2bf45c14859ff
-  - enabled: 1
+  - enabled: 0
     path: Assets/Creator Kit - RPG/SampleScene.unity
     guid: 1805b6e1d907cee4abe7049b507383f6
   - enabled: 1
