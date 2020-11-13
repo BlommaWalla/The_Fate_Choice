@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 
@@ -86,11 +87,16 @@ public class BattleSystem : MonoBehaviour
 		{
 			state = BattleState.LOST;
 			EndBattle();
-		} else
+            yield return new WaitForSeconds(4);
+            SceneManager.LoadScene("City");
+
+        } else
 		{
 			state = BattleState.PLAYERTURN;
 			PlayerTurn();
-		}
+            yield return new WaitForSeconds(4);
+            SceneManager.LoadScene("City");
+        }
 
 	}
 

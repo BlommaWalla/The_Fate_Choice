@@ -71,8 +71,6 @@ namespace RPGM.Gameplay {
 
         public void Startbattle() {
             SceneManager.LoadScene("SampleScene");
-
-
         }
 
         public void OnStartQuest() {
