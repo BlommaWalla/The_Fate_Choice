@@ -25,9 +25,9 @@ public class BattleSystem : MonoBehaviour {
     public BattleState state;
 
 
-    public bool block;
+    public bool block = false;
     public bool isDead = false;
-    public int damageMult;
+    public int damageMult = 1;
 
     // Start is called before the first frame update
     void Start() {
@@ -54,10 +54,17 @@ public class BattleSystem : MonoBehaviour {
     }
 
     IEnumerator PlayerAttack() {
-        bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
+        bool isDead = enemyUnit.TakeDamage(playerUnit.damage += damageMult);
 
         enemyHUD.SetHP(enemyUnit.currentHP);
+
         dialogueText.text = "The attack is successful!";
+
+        if (damageMult >= 5) {
+            dialogueText.text = "Critical hit!";
+
+        }
+        damageMult = 1;
 
         yield return new WaitForSeconds(2f);
 
@@ -74,17 +81,15 @@ public class BattleSystem : MonoBehaviour {
 
         if (!block) {
             dialogueText.text = enemyUnit.unitName + " attacks!";
-            yield return new WaitForSeconds(1f)
+            yield return new WaitForSeconds(1f);
             isDead = playerUnit.TakeDamage(enemyUnit.damage);
             playerHUD.SetHP(playerUnit.currentHP);
-
             yield return new WaitForSeconds(1f);
+
         } else {
-
             dialogueText.text = "You blocked the attack!";
+            block = false;
             yield return new WaitForSeconds(1f);
-
-
 
         }
 
@@ -121,12 +126,13 @@ public class BattleSystem : MonoBehaviour {
     }
 
     IEnumerator PlayerHeal() {
-        playerUnit.Heal(5);
+        block = true;
+        damageMult += 1;
+        //playerUnit.Heal(5);
 
-        playerHUD.SetHP(playerUnit.currentHP);
-        dialogueText.text = "You blocked the attack!";
+        //playerHUD.SetHP(playerUnit.currentHP);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         state = BattleState.ENEMYTURN;
         StartCoroutine(EnemyTurn());

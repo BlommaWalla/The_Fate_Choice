@@ -2204,9 +2204,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Heal
-
-'
+  m_Text: Block
 --- !u!222 &1679374786
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2291,6 +2289,9 @@ MonoBehaviour:
   playerHUD: {fileID: 1727677075}
   enemyHUD: {fileID: 1290496122}
   state: 0
+  block: 0
+  isDead: 0
+  damageMult: 0
 --- !u!4 &1714929644
 Transform:
   m_ObjectHideFlags: 0
