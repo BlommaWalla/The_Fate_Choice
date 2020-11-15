@@ -24,6 +24,11 @@ public class BattleSystem : MonoBehaviour {
 
     public BattleState state;
 
+
+    public bool block;
+    public bool isDead = false;
+    public int damageMult;
+
     // Start is called before the first frame update
     void Start() {
         state = BattleState.START;
@@ -47,7 +52,7 @@ public class BattleSystem : MonoBehaviour {
         state = BattleState.PLAYERTURN;
         PlayerTurn();
     }
-    
+
     IEnumerator PlayerAttack() {
         bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
 
@@ -66,15 +71,25 @@ public class BattleSystem : MonoBehaviour {
     }
 
     IEnumerator EnemyTurn() {
-        dialogueText.text = enemyUnit.unitName + " attacks!";
 
-        yield return new WaitForSeconds(1f);
+        if (!block) {
+            dialogueText.text = enemyUnit.unitName + " attacks!";
+            yield return new WaitForSeconds(1f)
+            isDead = playerUnit.TakeDamage(enemyUnit.damage);
+            playerHUD.SetHP(playerUnit.currentHP);
 
-        bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
+            yield return new WaitForSeconds(1f);
+        } else {
 
-        playerHUD.SetHP(playerUnit.currentHP);
+            dialogueText.text = "You blocked the attack!";
+            yield return new WaitForSeconds(1f);
 
-        yield return new WaitForSeconds(1f);
+
+
+        }
+
+
+
 
         if (isDead) {
             state = BattleState.LOST;
@@ -109,7 +124,7 @@ public class BattleSystem : MonoBehaviour {
         playerUnit.Heal(5);
 
         playerHUD.SetHP(playerUnit.currentHP);
-        dialogueText.text = "You feel renewed strength!";
+        dialogueText.text = "You blocked the attack!";
 
         yield return new WaitForSeconds(2f);
 
