@@ -151,38 +151,38 @@ public class BattleSystem : MonoBehaviour {
 
         switch (hintInt) {
             case 1:
-                dialogueText.text = "The attack button makes the enemy take damage";
+                dialogueText.text = "The attack button makes the enemy take damage (1 / 7)";
 
                 break;
 
 
             case 2:
-                dialogueText.text = "The block button blocks an attack";
+                dialogueText.text = "The block button blocks an attack (2 / 7)";
 
                 break;
 
             case 3:
-                dialogueText.text = "Blocking an attack makes your next attack stronger";
+                dialogueText.text = "Blocking an attack makes your next attack stronger (3 / 7)";
 
                 break;
 
             case 4:
-                dialogueText.text = "Try blocking more than one attack in a row";
+                dialogueText.text = "Try blocking more than one attack in a row (4 / 7)";
 
                 break;
 
             case 5:
-                dialogueText.text = "The hint button shows hints :O wow";
+                dialogueText.text = "The hint button shows hints :O wow (5 / 7)";
 
                 break;
 
             case 6:
-                dialogueText.text = "Try blocking more than one attack in a row";
+                dialogueText.text = "Try blocking more than one attack in a row (6 / 7)";
 
                 break;
 
             case 7:
-                dialogueText.text = "¯\\_(ツ)_ /¯";
+                dialogueText.text = "¯\\_(ツ)_ /¯ (7 / 7)";
                 hintInt = 0;
                 break;
 
