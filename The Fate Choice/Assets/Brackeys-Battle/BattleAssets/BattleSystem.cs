@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 
@@ -27,8 +28,8 @@ public class BattleSystem : MonoBehaviour {
 
     public bool block = false;
     public bool isDead = false;
-    public int damageMult = 1;
-
+    public int damageMult = 0;
+    private int hintInt = 0;
     // Start is called before the first frame update
     void Start() {
         state = BattleState.START;
@@ -64,7 +65,7 @@ public class BattleSystem : MonoBehaviour {
             dialogueText.text = "Critical hit!";
 
         }
-        damageMult = 1;
+        damageMult = 0;
 
         yield return new WaitForSeconds(2f);
 
@@ -93,9 +94,6 @@ public class BattleSystem : MonoBehaviour {
 
         }
 
-
-
-
         if (isDead) {
             state = BattleState.LOST;
             EndBattle();
@@ -121,8 +119,10 @@ public class BattleSystem : MonoBehaviour {
         }
     }
 
-    void PlayerTurn() {
+    IEnumerator PlayerTurn() {
         dialogueText.text = "Choose an action:";
+
+        return null;
     }
 
     IEnumerator PlayerHeal() {
@@ -138,6 +138,68 @@ public class BattleSystem : MonoBehaviour {
         StartCoroutine(EnemyTurn());
     }
 
+    IEnumerator PlayerHint() {
+        hintInt++;
+
+        System.Random random = new System.Random();
+        int gandon = random.Next(3);
+
+        bool wallah = random.Next(15) == 1;
+        if (wallah) {
+            hintInt = 8;
+        }
+
+        switch (hintInt) {
+            case 1:
+                dialogueText.text = "The attack button makes the enemy take damage";
+
+                break;
+
+
+            case 2:
+                dialogueText.text = "The block button blocks an attack";
+
+                break;
+
+            case 3:
+                dialogueText.text = "Blocking an attack makes your next attack stronger";
+
+                break;
+
+            case 4:
+                dialogueText.text = "Try blocking more than one attack in a row";
+
+                break;
+
+            case 5:
+                dialogueText.text = "The hint button shows hints :O wow";
+
+                break;
+
+            case 6:
+                dialogueText.text = "Try blocking more than one attack in a row";
+
+                break;
+
+            case 7:
+                dialogueText.text = "¯\\_(ツ)_ /¯";
+                hintInt = 0;
+                break;
+
+            case 8:
+                dialogueText.text = "大猿";
+                hintInt = 0;
+                break;
+        }
+
+        yield return new WaitForSeconds(5);
+        dialogueText.text = "Choose an action:";
+
+    }
+
+
+
+
     public void OnAttackButton() {
         if (state != BattleState.PLAYERTURN)
             return;
@@ -150,6 +212,13 @@ public class BattleSystem : MonoBehaviour {
             return;
 
         StartCoroutine(PlayerHeal());
+    }
+
+    public void OnHintButton() {
+        if (state != BattleState.PLAYERTURN)
+            return;
+
+        StartCoroutine(PlayerHint());
     }
 
 }
